@@ -1,0 +1,21 @@
+{
+  "license": "BSD",
+  "author": "azer",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kozmos/bookmark-backup-parser.git"
+  },
+  "scripts": {
+    "test": "node test -b"
+  },
+  "main": "index.js",
+  "description": "Take a bookmark backup in XML or HTML, return a flat JSON of bookmarks",
+  "version": "0.0.0",
+  "name": "bookmark-backup-parser",
+  "devDependencies": {
+    "prova": "github:azer/prova"
+  },
+  "dependencies": {
+    "easysax": "^0.2.0"
+  }
+}
