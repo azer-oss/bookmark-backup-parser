@@ -9,6 +9,7 @@ Supported Formats:
 | --- | --- |
 | Netscape | ✔ | ✔ |
 | Pocket | ✔ | ✔ |
+| Pinboard | ✔ | ✔ |
 | Txt  | * | ✖ |
 
 * Timestamps can be extracted from `txt` files only if URL and timestamp is in the same line.
