@@ -44,7 +44,25 @@ test('samples/netscape-tiny.html', t => {
 test('samples/firefox.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/firefox.html").toString()
   const parsed = netscape.parse(html)
-  t.equal(parsed.length, 7)
+  t.equal(parsed.length, 11)
+  t.end()
+})
+
+test('samples/safari.html', t => {
+  const html = require('fs').readFileSync("./test/sample-files/safari.html").toString()
+  const parsed = netscape.parse(html)
+  t.equal(parsed.length, 4)
+
+  t.equal(parsed[0].url, 'https://www.apple.com/')
+  t.equal(parsed[0].title, 'Apple')
+  t.notOk(parsed[0].addedAt)
+  t.notOk(parsed[0].tags)
+
+  t.equal(parsed[1].url, 'https://www.icloud.com/')
+  t.equal(parsed[1].title, 'iCloud')
+  t.notOk(parsed[1].addedAt)
+  t.notOk(parsed[1].tags)
+
   t.end()
 })
 
@@ -73,12 +91,12 @@ test('samples/pocket.html', t => {
   t.equal(parsed[2].title, 'Youtube')
   t.equal(parsed[2].url, 'https://www.youtube.com/watch?v=5q9H2cd36RU')
   t.equal(parsed[2].addedAt, 1494036573000)
-  t.deepEqual(parsed[2].tags, [])
+  t.notOk(parsed[2].tags)
 
   t.equal(parsed[3].title, 'Kozmos')
   t.equal(parsed[3].url, 'http://getkozmos.com')
   t.equal(parsed[3].addedAt, 1494036561000)
-  t.deepEqual(parsed[3].tags, [])
+  t.notOk(parsed[3].tags)
 
   t.end()
 })
@@ -106,7 +124,8 @@ test('samples/pinboard.json', t => {
   t.equal(parsed[3].url, 'https:\/\/us-west-2.console.aws.amazon.com\/console\/home?region=us-west-2#')
   t.equal(parsed[3].title, 'AWS Management Console')
   t.equal(parsed[3].addedAt, 1495108630000)
-  t.deepEqual(parsed[3].tags, [])
+  t.notOk(parsed[3].tags)
+
 
   t.end()
 })
