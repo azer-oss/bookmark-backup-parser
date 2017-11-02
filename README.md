@@ -4,17 +4,19 @@ Well tested, multi-format parser for your bookmarking backups. This is the libra
 
 **Supported Formats:**
 
-| Format | Timestamps? | Tags?    |
-| --- | --- |
-| Netscape (HTML) | ✔ | * |
-| Pocket (HTML) | ✔ | ✔ |
-| Pinboard (JSON) | ✔ | ✔ |
+| Format | Timestamps? | Tags? |
+| --- | --- | --- |
+| Netscape | ✔ | * |
+| Pocket | ✔ | ✔ |
+| Pinboard | ✔ | ✔ |
 | JSON | ** | ** |
 | Txt  | *** | ✖ |
 
-* Netscape (Google Chrome, Firefox) formats have folders instead of tags. This library generates tags from the folder names hierarchically.
-** JSON files has to be structured as an array and also use [common property names](https://github.com/kozmos/bookmark-backup-parser/tree/master/lib/json.js#l1).
-** Timestamps can be extracted from `txt` files only if URL and timestamp is in the same line.
+\* Netscape (Google Chrome, Firefox) formats have folders instead of tags. This library generates tags from the folder names hierarchically.
+
+\*\* JSON files has to be structured as an array and also use [common property names](https://github.com/kozmos/bookmark-backup-parser/tree/master/lib/json.js#L3).
+
+\*\*\* Timestamps can be extracted from `txt` files only if URL and timestamp is in the same line.
 
 ## Install
 
