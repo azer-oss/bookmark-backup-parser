@@ -2,6 +2,7 @@ const test = require("prova")
 const netscape = require("../lib/netscape")
 const pocket = require("../lib/pocket")
 const json = require("../lib/json")
+const text = require("../lib/text")
 
 test('samples/netscape-tiny.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/netscape-tiny.html").toString()
@@ -106,6 +107,29 @@ test('samples/pinboard.json', t => {
   t.equal(parsed[3].title, 'AWS Management Console')
   t.equal(parsed[3].addedAt, 1495108630000)
   t.deepEqual(parsed[3].tags, [])
+
+  t.end()
+})
+
+test('samples/bookmarks.txt', t => {
+  const input = require('fs').readFileSync("./test/sample-files/bookmarks.txt").toString()
+  const parsed = text.parse(input)
+  t.equal(parsed.length, 3)
+
+  t.equal(parsed[0].url, 'https://siteinspire.com')
+  t.notOk(parsed[0].title)
+  t.equal(parsed[0].addedAt, 1502981647000)
+  t.notOk(parsed[0].tags)
+
+  t.equal(parsed[1].url, 'http://itsnicethat.com')
+  t.equal(parsed[1].addedAt, 1502981606000)
+  t.notOk(parsed[1].title)
+  t.notOk(parsed[1].tags)
+
+  t.equal(parsed[2].url, 'https://land-book.com')
+  t.equal(parsed[2].addedAt, 1502980736000)
+  t.notOk(parsed[2].title)
+  t.notOk(parsed[2].tags)
 
   t.end()
 })
