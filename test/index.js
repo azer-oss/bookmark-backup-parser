@@ -1,12 +1,10 @@
 const test = require("prova")
-const netscape = require("../lib/netscape")
-const pocket = require("../lib/pocket")
-const json = require("../lib/json")
-const text = require("../lib/text")
+const parse = require("../")
+
 
 test('samples/netscape-tiny.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/netscape-tiny.html").toString()
-  const parsed = netscape.parse(html)
+  const parsed = parse(html)
   t.equal(parsed.length, 6)
   t.equal(parsed[0].url, 'http://novatogatorop.com/')
   t.equal(parsed[0].title, 'Nova Togatorop')
@@ -43,14 +41,14 @@ test('samples/netscape-tiny.html', t => {
 
 test('samples/firefox.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/firefox.html").toString()
-  const parsed = netscape.parse(html)
+  const parsed = parse(html)
   t.equal(parsed.length, 11)
   t.end()
 })
 
 test('samples/safari.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/safari.html").toString()
-  const parsed = netscape.parse(html)
+  const parsed = parse(html)
   t.equal(parsed.length, 4)
 
   t.equal(parsed[0].url, 'https://www.apple.com/')
@@ -68,14 +66,14 @@ test('samples/safari.html', t => {
 
 test('samples/netscape-big.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/netscape-big.html").toString()
-  const parsed = netscape.parse(html)
+  const parsed = parse(html)
   t.equal(parsed.length, 5402)
   t.end()
 })
 
 test('samples/pocket.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/pocket.html").toString()
-  const parsed = pocket.parse(html)
+  const parsed = parse(html)
 
   t.equal(parsed.length, 4)
   t.equal(parsed[0].url, 'http://github.com')
@@ -103,7 +101,7 @@ test('samples/pocket.html', t => {
 
 test('samples/pinboard.json', t => {
   const html = require('fs').readFileSync("./test/sample-files/pinboard.json").toString()
-  const parsed = json.parse(html)
+  const parsed = parse(html)
   t.equal(parsed.length, 5399)
 
   t.equal(parsed[0].url, 'https://echo.labstack.com/middleware/gzip')
@@ -132,7 +130,7 @@ test('samples/pinboard.json', t => {
 
 test('samples/bookmarks.txt', t => {
   const input = require('fs').readFileSync("./test/sample-files/bookmarks.txt").toString()
-  const parsed = text.parse(input)
+  const parsed = parse(input)
   t.equal(parsed.length, 3)
 
   t.equal(parsed[0].url, 'https://siteinspire.com')
