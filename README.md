@@ -12,7 +12,9 @@ Well tested, multi-format parser for your bookmarking backups. This is the libra
 | JSON | ** | ** |
 | Txt  | *** | Nope |
 
-*\* Netscape (Google Chrome, Firefox) formats have folders instead of tags. This library generates tags from the folder names hierarchically.*
+P.S: Netscape format is used by Google Chrome, Firefox and Safari.
+
+*\* Netscape formats have folders instead of tags. This library generates tags from the folder names hierarchically.*
 
 *\*\* JSON files has to be structured as an array and also use [common property names](https://github.com/kozmos/bookmark-backup-parser/tree/master/lib/json.js#L3).*
 
