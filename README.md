@@ -1,6 +1,6 @@
 ## bookmark-backup-parser
 
-Well tested, multi-format parser for your bookmarking backups. This is the library [Kozmos](https://getkozmos.com) uses for import.
+Multi-format parser for your bookmarking backups. Heavily tested with popular browsers (Chrome, Firefox, Safari) and also bookmarking services (Pocket, Pinboard). This is the library [Kozmos](https://getkozmos.com) uses for import.
 
 **Supported Formats:**
 
@@ -11,8 +11,6 @@ Well tested, multi-format parser for your bookmarking backups. This is the libra
 | Pinboard | Yes | Yes |
 | JSON | ** | ** |
 | Txt  | *** | Nope |
-
-P.S: Netscape format is used by Google Chrome, Firefox and Safari.
 
 *\* Netscape formats have folders instead of tags. This library generates tags from the folder names hierarchically.*
 
