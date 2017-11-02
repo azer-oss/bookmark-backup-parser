@@ -1,5 +1,7 @@
 const test = require("prova")
 const netscape = require("../lib/netscape")
+const pocket = require("../lib/pocket")
+const json = require("../lib/json")
 
 test('samples/netscape-tiny.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/netscape-tiny.html").toString()
@@ -42,5 +44,68 @@ test('samples/firefox.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/firefox.html").toString()
   const parsed = netscape.parse(html)
   t.equal(parsed.length, 7)
+  t.end()
+})
+
+test('samples/netscape-big.html', t => {
+  const html = require('fs').readFileSync("./test/sample-files/netscape-big.html").toString()
+  const parsed = netscape.parse(html)
+  t.equal(parsed.length, 5402)
+  t.end()
+})
+
+test('samples/pocket.html', t => {
+  const html = require('fs').readFileSync("./test/sample-files/pocket.html").toString()
+  const parsed = pocket.parse(html)
+
+  t.equal(parsed.length, 4)
+  t.equal(parsed[0].url, 'http://github.com')
+  t.equal(parsed[0].title, 'Github')
+  t.equal(parsed[0].addedAt, 1509515224000)
+  t.deepEqual(parsed[0].tags, ['coding', 'open source', 'programming'])
+
+  t.equal(parsed[1].title, 'Azer Koçulu')
+  t.equal(parsed[1].url, 'http://azer.bike')
+  t.equal(parsed[1].addedAt, 1502366628000)
+  t.deepEqual(parsed[1].tags, ['personal'])
+
+  t.equal(parsed[2].title, 'Youtube')
+  t.equal(parsed[2].url, 'https://www.youtube.com/watch?v=5q9H2cd36RU')
+  t.equal(parsed[2].addedAt, 1494036573000)
+  t.deepEqual(parsed[2].tags, [])
+
+  t.equal(parsed[3].title, 'Kozmos')
+  t.equal(parsed[3].url, 'http://getkozmos.com')
+  t.equal(parsed[3].addedAt, 1494036561000)
+  t.deepEqual(parsed[3].tags, [])
+
+  t.end()
+})
+
+test('samples/pinboard.json', t => {
+  const html = require('fs').readFileSync("./test/sample-files/pinboard.json").toString()
+  const parsed = json.parse(html)
+  t.equal(parsed.length, 5399)
+
+  t.equal(parsed[0].url, 'https://echo.labstack.com/middleware/gzip')
+  t.equal(parsed[0].title, 'Gzip Middleware | Echo - High performance, minimalist Go web framework')
+  t.equal(parsed[0].addedAt, 1495110788000)
+  t.deepEqual(parsed[0].tags, ['golang', 'library'])
+
+  t.equal(parsed[1].url, 'https://github.com/NYTimes/gziphandler')
+  t.equal(parsed[1].title, 'NYTimes/gziphandler: Golang middleware to gzip HTTP responses')
+  t.equal(parsed[1].addedAt, 1495110604000)
+  t.deepEqual(parsed[1].tags, ['compression'])
+
+  t.equal(parsed[2].url, 'https://gist.github.com/the42/1956518')
+  t.equal(parsed[2].title, 'GZip encoding for GO V1 using custom responsewriter')
+  t.equal(parsed[2].addedAt, 1495110600000)
+  t.deepEqual(parsed[2].tags, ['gist', 'gzip'])
+
+  t.equal(parsed[3].url, 'https:\/\/us-west-2.console.aws.amazon.com\/console\/home?region=us-west-2#')
+  t.equal(parsed[3].title, 'AWS Management Console')
+  t.equal(parsed[3].addedAt, 1495108630000)
+  t.deepEqual(parsed[3].tags, [])
+
   t.end()
 })
