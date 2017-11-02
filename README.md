@@ -6,11 +6,11 @@ Well tested, multi-format parser for your bookmarking backups. This is the libra
 
 | Format | Timestamps? | Tags? |
 | --- | --- | --- |
-| Netscape |  | * |
-| Pocket |  |  |
-| Pinboard |  |  |
+| Netscape | Yes | * |
+| Pocket | Yes | Yes |
+| Pinboard | Yes | Yes |
 | JSON | ** | ** |
-| Txt  | *** |  |
+| Txt  | *** | Nope |
 
 *\* Netscape (Google Chrome, Firefox) formats have folders instead of tags. This library generates tags from the folder names hierarchically.*
 
