@@ -1,7 +1,6 @@
 const test = require("prova")
 const parse = require("../")
 
-
 test('samples/netscape-tiny.html', t => {
   const html = require('fs').readFileSync("./test/sample-files/netscape-tiny.html").toString()
   const parsed = parse(html)
@@ -100,8 +99,8 @@ test('samples/pocket.html', t => {
 })
 
 test('samples/pinboard.json', t => {
-  const html = require('fs').readFileSync("./test/sample-files/pinboard.json").toString()
-  const parsed = parse(html)
+  const input = require('fs').readFileSync("./test/sample-files/pinboard.json").toString()
+  const parsed = parse(input)
   t.equal(parsed.length, 5399)
 
   t.equal(parsed[0].url, 'https://echo.labstack.com/middleware/gzip')
@@ -147,6 +146,44 @@ test('samples/bookmarks.txt', t => {
   t.equal(parsed[2].addedAt, 1502980736000)
   t.notOk(parsed[2].title)
   t.notOk(parsed[2].tags)
+
+  t.end()
+})
+
+test('samples/chrome.json', t => {
+  const input = require('fs').readFileSync("./test/sample-files/chrome.json").toString()
+  const parsed = parse(input)
+  t.equal(parsed.length, 6)
+
+  t.equal(parsed[0].title, 'Github')
+  t.equal(parsed[0].url, 'https://github.com/')
+  t.equal(parsed[0].addedAt, 1509512445162)
+  t.deepEqual(parsed[0].tags, ['foo', 'bar'])
+
+  t.equal(parsed[1].url, 'http://novatogatorop.com/')
+  t.equal(parsed[1].title, 'Nova Togatorop')
+  t.equal(parsed[1].addedAt, 1509512514026)
+  t.deepEqual(parsed[1].tags, ['foo'])
+
+  t.equal(parsed[2].title, 'Azer Koçulu')
+  t.equal(parsed[2].url, 'http://azer.bike/')
+  t.equal(parsed[2].addedAt, 1509512461626)
+  t.deepEqual(parsed[2].tags, ['span'])
+
+  t.equal(parsed[3].title, 'Youtube')
+  t.equal(parsed[3].url, 'https://youtube.com/')
+  t.equal(parsed[3].addedAt, 1509524061518)
+  t.deepEqual(parsed[3].tags, ['yolo'])
+
+  t.equal(parsed[4].title, 'Wikipedia')
+  t.equal(parsed[4].url, 'https://en.wikipedia.org/')
+  t.equal(parsed[4].addedAt, 1509524085123)
+  t.deepEqual(parsed[4].tags, ['yolo'])
+
+  t.equal(parsed[5].title, 'Kozmos')
+  t.equal(parsed[5].url, 'https://getkozmos.com')
+  t.equal(parsed[5].addedAt, 1510289975272)
+  t.deepEqual(parsed[5].tags, ['yolo'])
 
   t.end()
 })

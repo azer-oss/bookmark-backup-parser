@@ -1,6 +1,6 @@
 ## bookmark-backup-parser
 
-Multi-format parser for your bookmarking backups. Heavily tested with popular browsers (Chrome, Firefox, Safari) and also bookmarking services (Pocket, Pinboard). This is the library [Kozmos](https://getkozmos.com) uses for import.
+Multi-format parser for your bookmarking backups. Heavily tested with popular browsers (Chrome, Firefox, Safari) and also bookmarking services (Pocket, Pinboard). This is the library [Kozmos](https://getkozmos.com) uses for importing user bookmarks.
 
 **Supported Formats:**
 
@@ -9,6 +9,7 @@ Multi-format parser for your bookmarking backups. Heavily tested with popular br
 | Netscape | Yes | * |
 | Pocket | Yes | Yes |
 | Pinboard | Yes | Yes |
+| Chrome/Firefox (JSON) | Yes | Yes |
 | JSON | ** | ** |
 | Txt  | *** | Nope |
 
@@ -32,7 +33,7 @@ const html = require('fs').readFileSync('./bookmarks.html').toString()
 
 const parsed = parse(html)
 // [
-//   { url: "http://kozmos.cool", createdAt: 1501384533000, tags: ['foo', 'bar'] },
+//   { title: "Kozmos", url: "http://kozmos.cool", addedAt: 1501384533000, tags: ['foo', 'bar'] },
 //   ...
 // ]
 ```

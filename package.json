@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "node test -b"
+    "test": "node test"
   },
   "main": "index.js",
   "dependencies": {

@@ -2,10 +2,12 @@ const netscape = require("./lib/netscape")
 const json = require("./lib/json")
 const pocket = require("./lib/pocket")
 const text = require("./lib/text")
+const chromeJSON = require('./lib/chrome-json.js')
 
 const parsers = [
   netscape,
   pocket,
+  chromeJSON,
   json,
   text
 ]
