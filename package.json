@@ -1,4 +1,5 @@
 {
+  "name": "bookmark-backup-parser",
   "scripts": {
     "test": "node test"
   },
