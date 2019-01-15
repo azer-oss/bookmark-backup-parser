@@ -1,6 +1,19 @@
 const test = require("prova")
 const parse = require("../")
 
+test("samples/chrome-big.html", t => {
+  const html = require("fs")
+    .readFileSync("./test/sample-files/chrome-big.html")
+    .toString()
+
+  const parsed = parse(html)
+  t.equal(parsed.length, 24119)
+  t.equal(parsed[0].title, "Buttermilk Banana Bread")
+  t.deepEqual(parsed[0].tags, ["made", "quickbreads_sweet"])
+
+  t.end()
+})
+
 test("samples/netscape-tiny.html", t => {
   const html = require("fs")
     .readFileSync("./test/sample-files/netscape-tiny.html")
